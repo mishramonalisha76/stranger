@@ -13,5 +13,9 @@ router.get('/home',function(req,res){
 });
 router.post('/home',function(req,res){
   res.redirect('chat');
+
+})
+router.get('/homepage' ,function(req,res){
+  res.render('page');
 })
 module.exports = router;
