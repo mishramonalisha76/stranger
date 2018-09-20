@@ -1,4 +1,4 @@
-<style>
+
 .display{
     border-style:solid;
     border-width:3px;
@@ -34,9 +34,7 @@ img{
      
 
         }
-body{
-    background-image:url("./images/back1.jpg");
-}
+
 .header{
     background-color: whitesmoke;
     border-radius: 50px 20px;
@@ -58,4 +56,3 @@ body{
        color: white;
    }
 
-    </style>
