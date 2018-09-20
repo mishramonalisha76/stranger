@@ -29,11 +29,7 @@ img{
      border-radius: 50%;
      border-color: black;
      margin-left: 25px;
-
-     
-     
-
-        }
+}
 
 .header{
     background-color: whitesmoke;
@@ -44,15 +40,14 @@ img{
     height: 60px;
     margin-bottom: 32px;
     margin-top: -55px;
-   
+
    text-align: center;
 
    font-variant: small-caps;
-   
+
 }
    .send:hover
    {
        background-color: cadetblue;
        color: white;
    }
-
