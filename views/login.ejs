@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+   <title>Stranger app</title>
+   <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
+   <script src="/socket.io/socket.io.js"></script>
+   <script>
+    var socket = io();
+    function setUsername() {
+         socket.emit('setUsername', document.getElementById('name').value);
+      };
+      var user;
+      socket.on('userExists', function(data) {
+         document.getElementById('error-container').innerHTML = data;
+      });
+    </script>
+   <body>
+
+       
+     <div>        <form action="login" method="post">
+
+           
+
+            <label>Username</label><br>
+            <input id="error-container" type="text" name="username"><br>
+
+            <label>Password:</label><br>
+            <input type="password" name="password"><br>
+
+           
+            <input type="button" onclick="setUsername()" value="submit">
+
+        </form>
+     </div>
+
+   </body>
+</html>
