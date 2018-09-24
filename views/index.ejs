@@ -3,7 +3,18 @@
   <head>
    <title>Stranger app</title>
    <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
-    <body>
+   <script src="/socket.io/socket.io.js"></script>
+   <script>
+    var socket = io();
+    function setUsername() {
+         socket.emit('setUsername', document.getElementById('name').value);
+      };
+      var user;
+      socket.on('userExists', function(data) {
+         document.getElementById('error-container').innerHTML = data;
+      });
+    </script>
+   <body>
 
      <div>
         <form action="home" method="post">
@@ -12,7 +23,7 @@
             <input type="text" name="name"><br>
 
             <label>Username</label><br>
-            <input type="text" name="username"><br>
+            <input id="error-container" type="text" name="username"><br>
 
             <label>Email:</label><br>
             <input type="email" name="email"><br>
@@ -25,7 +36,7 @@
                 <option value="male">male</option>
                 <option value="female">female</option>
             </select><br>
-            <input type="button" value="submit">
+            <input type="button" onclick="setUsername()" value="submit">
 
         </form>
      </div>
