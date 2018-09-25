@@ -9,6 +9,21 @@
 <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Aclonica' rel='stylesheet'>
+    <script src="http://localhost:3001/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io("http://localhost:3001");
+     function sendMessage() {
+         var msg = document.getElementById('message').val();
+         if(msg) {
+            socket.emit('msg', {message: msg});
+         }
+      }
+      socket.on('newmsg', function(data) {
+         if(user) {
+            document.getElementById('message-container').innerHTML += '<div>' + data.message + '</div>'
+         }
+      })
+    </script>
 </head>
 <body>
         
@@ -27,10 +42,10 @@
          </nav>
     <div class="container-fluid"></div>
     <div align="center">
-      <div class ="display"></div>
+      <div class ="display" id="message-container"></div>
       <div>
-          <textarea class="text"></textarea>
-          <button class="send" type="button">SEND</button>
+          <textarea id="message" class="text"></textarea>
+          <button class="send" type="button" onclick="sendMessage()">SEND</button>
       </div>
     </div>
     </div>

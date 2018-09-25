@@ -29,7 +29,10 @@ router.get('/homepage' ,function(req,res){
 io.on('connection', function(socket) {
   console.log('A user connected');
    
-  
+  socket.on('msg', function(data) {
+    //Send message to everyone
+    io.sockets.emit('newmsg', data);
+ })
 
 });
 module.exports = router;
