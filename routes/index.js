@@ -12,23 +12,24 @@ router.get('/login' ,function(req,res){
 router.get('/chat' ,function(req,res){
   res.render('chatbox');
 })
-router.get('/home',function(req,res){
-  res.render('index');
-})
-router.post('/home',function(req,res){
-  res.redirect('chat');
+
+router.post('/login',function(req,res){
+  res.redirect('/chat');
+
+});
+router.post('/homepage',function(req,res){
+  res.redirect('/login');
 
 });
 router.get('/homepage' ,function(req,res){
   res.render('page');
 })
-users=[];
+
 
 io.on('connection', function(socket) {
   console.log('A user connected');
-  socket.on('setUsername', function(data) {
-     res.write(data);
+   
+  
 
-    })
-  });
+});
 module.exports = router;
