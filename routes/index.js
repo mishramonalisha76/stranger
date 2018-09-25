@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+var server=require('http').Server(router);
+var io=require('socket.io')(server);
 /* GET home page. */
 router.get('/' ,function(req,res){
   res.redirect('home');
@@ -21,4 +22,14 @@ router.post('/home',function(req,res){
 router.get('/homepage' ,function(req,res){
   res.render('page');
 })
+users=[];
+
+io.on('connection', function(socket) {
+  console.log('A user connected');
+  socket.on('setUsername', function(data) {
+     res.write(data);
+     
+    })
+  });
 module.exports = router;
+
