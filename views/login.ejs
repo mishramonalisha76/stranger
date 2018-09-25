@@ -3,9 +3,9 @@
   <head>
    <title>Stranger app</title>
    <link rel="stylesheet" type="text/css" href="stylesheets/login.css">
-   <script src="/socket.io/socket.io.js"></script>
+   <script src="http://localhost:3001/socket.io/socket.io.js"></script>
    <script>
-    var socket = io();
+    var socket = io("http://localhost:3001");
     function setUsername() {
          socket.emit('setUsername', document.getElementById('name').value);
       };
@@ -16,10 +16,10 @@
     </script>
    <body>
 
-       
+
      <div>        <form action="login" method="post">
 
-           
+
 
             <label>Username</label><br>
             <input id="error-container" type="text" name="username"><br>
@@ -27,7 +27,7 @@
             <label>Password:</label><br>
             <input type="password" name="password"><br>
 
-           
+
             <input type="button" onclick="setUsername()" value="Login">
 
         </form>

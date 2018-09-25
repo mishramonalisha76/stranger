@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var server=require('http').Server(router);
-var io=require('socket.io')(server);
+
+var io = require('socket.io').listen(3001, {log: false});
 /* GET home page. */
 router.get('/' ,function(req,res){
   res.redirect('home');
@@ -28,8 +28,7 @@ io.on('connection', function(socket) {
   console.log('A user connected');
   socket.on('setUsername', function(data) {
      res.write(data);
-     
+
     })
   });
 module.exports = router;
-
