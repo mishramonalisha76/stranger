@@ -12,16 +12,23 @@
     <script src="http://localhost:3001/socket.io/socket.io.js"></script>
     <script>
         var socket = io("http://localhost:3001");
+  var c=0;
+       
      function sendMessage() {
-         var msg = document.getElementById('message').val();
+         var data;
+         
+         var msg = document.getElementById('message').value;
+         console.log(msg);
          if(msg) {
-            socket.emit('msg', {message: msg});
+            socket.emit('msg', msg);
          }
       }
       socket.on('newmsg', function(data) {
-         if(user) {
-            document.getElementById('message-container').innerHTML += '<div>' + data.message + '</div>'
-         }
+          if(c=0)
+            document.getElementById('message-container').innerHTML += '<div style="position:absolute ;">'+data+'</div>'+'<br>';
+         else
+         document.getElementById('message-container').innerHTML += '<div style="position:absolute ;">'+data+'</div>'+'<br>';
+      c++;
       })
     </script>
 </head>

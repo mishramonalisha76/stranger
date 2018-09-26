@@ -5,6 +5,7 @@
     width:40%;
     height: 60%;
     background-color:honeydew;
+    overflow:scroll;
 }
 .text
 {
